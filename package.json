@@ -1,0 +1,15 @@
+{
+  "name": "interval-trainer",
+  "version": "1.0.0",
+  "description": "USER STORY: Simple Interval Trainer The Simple Interval Trainer is a web application that helps users perform interval-based workouts. This application prompts the user to alternate between workout and rest intervals, allowing for effective exercise routines.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^29.6.1"
+  }
+}
