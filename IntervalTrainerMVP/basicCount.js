@@ -1,11 +1,25 @@
 let counter = 0; // Initialize the counter variable
 let intervalId; // Initialize a variable to store the interval ID
 
+function formatCounter(milliseconds) {
+  const totalMilliseconds = Math.floor(milliseconds);
+  const hours = Math.floor(totalMilliseconds / 3600000);
+  const minutes = Math.floor((totalMilliseconds % 3600000) / 60000);
+  const tenths = Math.floor((totalMilliseconds % 60000) / 100);
+  const hundredths = totalMilliseconds % 100;
+
+  return `${hours.toString().padStart(2, "0")}:${minutes
+    .toString()
+    .padStart(2, "0")}:${tenths.toString().padStart(1, "0")}:${hundredths
+    .toString()
+    .padStart(2, "0")}`;
+}
+
 function startCounter() {
   intervalId = setInterval(function () {
-    counter += 0.001;
-    console.log(counter.toFixed(6));
-  }, 1); // Increment the counter every 1 millisecond
+    counter += 10; // Increment the counter by 10 milliseconds
+    console.log(formatCounter(counter));
+  }, 10); // Increment the counter every 10 milliseconds
 }
 
 function stopCounter() {
