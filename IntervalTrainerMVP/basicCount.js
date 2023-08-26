@@ -3,8 +3,8 @@ let intervalId; // Initialize a variable to store the interval ID
 
 function startCounter() {
   intervalId = setInterval(function () {
-    counter++;
-    console.log(counter);
+    counter += 0.001;
+    console.log(counter.toFixed(3));
   }, 1000); // Increment the counter every 1000ms (1 second)
 }
 
