@@ -12,7 +12,7 @@ function formatCounter(milliseconds) {
     .toString()
     .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}:${tenths
     .toString()
-    .padStart(1, "0")}`;
+    .padStart(2, "0")}`;
 }
 
 function startCounter() {
