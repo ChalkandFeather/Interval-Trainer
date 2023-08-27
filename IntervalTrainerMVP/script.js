@@ -11,10 +11,12 @@ function startCounter() {
   intervalId = setInterval(function () {
     const currentTime = Date.now();
     const elapsedTime = currentTime - startTime;
-    console.log(formatCounter(elapsedTime));
+    const formattedTime = formatCounter(elapsedTime);
+
+    // Update the timer display element
+    document.getElementById("timerDisplay").textContent = formattedTime;
   }, 100); // Update the counter every 100 milliseconds
 }
-
 function stopCounter() {
   clearInterval(intervalId);
 }
