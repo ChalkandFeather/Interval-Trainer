@@ -34,7 +34,7 @@ function stopCounter() {
 }
 
 // To start the counter, call the startCounter() function
-startCounter();
+//startCounter();
 
 // To stop the counter after a certain time (e.g., 5 seconds), you can use setTimeout
 setTimeout(function () {
