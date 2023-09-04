@@ -33,11 +33,14 @@ function stopCounter() {
   clearInterval(intervalId);
 }
 
-// To start the counter, call the startCounter() function
-//startCounter();
+// Event listeners for the "Start" and "Stop" buttons
+const startButton = document.getElementById("startButton");
+const stopButton = document.getElementById("stopButton");
 
-// To stop the counter after a certain time (e.g., 5 seconds), you can use setTimeout
-setTimeout(function () {
+startButton.addEventListener("click", () => {
+  startCounter();
+});
+
+stopButton.addEventListener("click", () => {
   stopCounter();
-  console.log("Counter stopped");
-}, 5000); // Stop the counter after 5000ms (5 seconds)
+});
