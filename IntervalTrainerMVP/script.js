@@ -1,9 +1,20 @@
-// script.js
+// script.js (combined)
+
 let startTime;
 let intervalId;
 
 function formatCounter(milliseconds) {
-  // ... (rest of the formatCounter function)
+  const totalMilliseconds = Math.floor(milliseconds);
+  const hours = Math.floor(totalMilliseconds / 3600000);
+  const minutes = Math.floor((totalMilliseconds % 3600000) / 60000);
+  const seconds = Math.floor((totalMilliseconds % 60000) / 1000);
+  const tenths = Math.floor((totalMilliseconds % 1000) / 100);
+
+  return `${hours.toString().padStart(2, "0")}:${minutes
+    .toString()
+    .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}:${tenths
+    .toString()
+    .padStart(2, "0")}`;
 }
 
 function startCounter() {
@@ -17,19 +28,16 @@ function startCounter() {
     document.getElementById("timerDisplay").textContent = formattedTime;
   }, 100); // Update the counter every 100 milliseconds
 }
+
 function stopCounter() {
   clearInterval(intervalId);
 }
 
-// Get the reference to the buttons after the function definitions
-const startButton = document.getElementById("startButton");
-const stopButton = document.getElementById("stopButton");
+// To start the counter, call the startCounter() function
+startCounter();
 
-// Add event listeners to the buttons
-startButton.addEventListener("click", () => {
-  startCounter();
-});
-
-stopButton.addEventListener("click", () => {
+// To stop the counter after a certain time (e.g., 5 seconds), you can use setTimeout
+setTimeout(function () {
   stopCounter();
-});
+  console.log("Counter stopped");
+}, 5000); // Stop the counter after 5000ms (5 seconds)
