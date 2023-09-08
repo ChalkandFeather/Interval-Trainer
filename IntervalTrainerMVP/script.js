@@ -15,6 +15,10 @@ function formatCounter(milliseconds) {
     .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}:${tenths
     .toString()
     .padStart(2, "0")}`;
+
+  console.log(formattedTime);
+
+  return formattedTime;
 }
 
 function startCounter() {
