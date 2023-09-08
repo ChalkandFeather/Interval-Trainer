@@ -10,13 +10,14 @@ function formatCounter(milliseconds) {
   const seconds = Math.floor((totalMilliseconds % 60000) / 1000);
   const tenths = Math.floor((totalMilliseconds % 1000) / 100);
 
-  return `${hours.toString().padStart(2, "0")}:${minutes
+  const formattedTime = `${hours.toString().padStart(2, "0")}:${minutes
     .toString()
     .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}:${tenths
     .toString()
     .padStart(2, "0")}`;
 
-  console.log(formattedTime);
+  // Debugging: Log the formatted time
+  console.log("Formatted Time:", formattedTime);
 
   return formattedTime;
 }
@@ -28,8 +29,14 @@ function startCounter() {
     const elapsedTime = currentTime - startTime;
     const formattedTime = formatCounter(elapsedTime);
 
+    // Debugging: Log the formatted time being set
+    console.log("Setting Timer Display:", formattedTime);
+
     // Update the timer display element
-    document.getElementById("timerDisplay").textContent = formattedTime;
+    const timerDisplayElement = document.getElementById("timerDisplay");
+    if (timerDisplayElement) {
+      timerDisplayElement.textContent = formattedTime;
+    }
   }, 100); // Update the counter every 100 milliseconds
 }
 
