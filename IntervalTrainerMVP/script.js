@@ -2,6 +2,8 @@
 
 let startTime;
 let intervalId;
+let pausedTime = 0;
+let isPaused = false;
 
 function formatCounter(milliseconds) {
   const totalMilliseconds = Math.floor(milliseconds);
