@@ -46,6 +46,8 @@ function startCounter() {
 
 function stopCounter() {
   clearInterval(intervalId);
+  pausedTime = 0;
+  isPaused = false;
 }
 
 // Event listeners for the "Start" and "Stop" buttons
