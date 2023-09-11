@@ -44,14 +44,28 @@ function pauseCounter() {
 
 function stopCounter() {
   clearInterval(intervalId);
-  pausedTime = 0;
+  const timerDisplayElement = document.getElementById("timerDisplay");
+  if (timerDisplayElement) {
+    timerDisplayElement.textContent = formatCounter(pausedTime);
+  }
   isPaused = false;
 }
 
-// Event listeners for the "Start," "Pause," and "Stop" buttons
+function resetCounter() {
+  clearInterval(intervalId);
+  pausedTime = 0;
+  isPaused = false;
+  const timerDisplayElement = document.getElementById("timerDisplay");
+  if (timerDisplayElement) {
+    timerDisplayElement.textContent = "00:00:00:00";
+  }
+}
+
+// Event listeners for the buttons
 const startButton = document.getElementById("startButton");
 const pauseButton = document.getElementById("pauseButton");
 const stopButton = document.getElementById("stopButton");
+const resetButton = document.getElementById("resetButton");
 
 startButton.addEventListener("click", () => {
   startCounter();
@@ -63,4 +77,8 @@ pauseButton.addEventListener("click", () => {
 
 stopButton.addEventListener("click", () => {
   stopCounter();
+});
+
+resetButton.addEventListener("click", () => {
+  resetCounter();
 });
