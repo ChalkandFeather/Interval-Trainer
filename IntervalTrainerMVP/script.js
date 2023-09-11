@@ -42,6 +42,13 @@ function startCounter() {
       timerDisplayElement.textContent = formattedTime;
     }
   }, 100); // Update the counter every 100 milliseconds
+  isPaused = false;
+}
+
+function pauseCounter() {
+  clearInterval(intervalId);
+  pausedTime = Date.now() - startTime;
+  isPaused = true;
 }
 
 function stopCounter() {
@@ -52,10 +59,15 @@ function stopCounter() {
 
 // Event listeners for the "Start" and "Stop" buttons
 const startButton = document.getElementById("startButton");
+const pauseButton = document.getElementById("pauseButton");
 const stopButton = document.getElementById("stopButton");
 
 startButton.addEventListener("click", () => {
   startCounter();
+});
+
+pauseButton.addEventListener("click", () => {
+  pauseCounter();
 });
 
 stopButton.addEventListener("click", () => {
