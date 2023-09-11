@@ -1,5 +1,3 @@
-// script.js (combined)
-
 let startTime;
 let intervalId;
 let pausedTime = 0;
@@ -22,6 +20,16 @@ function formatCounter(milliseconds) {
   // console.log("Formatted Time:", formattedTime);
 
   // return formattedTime;
+}
+function updateCounterDisplay() {
+  const currentTime = Date.now();
+  const elapsedTime = currentTime - startTime - pausedTime;
+  const formattedTime = formatCounter(elapsedTime);
+
+  const timerDisplayElement = document.getElementById("timerDisplay");
+  if (timerDisplayElement) {
+    timerDisplayElement.textContent = formattedTime;
+  }
 }
 
 function startCounter() {
