@@ -36,20 +36,7 @@ function startCounter() {
   if (!isPaused) {
     startTime = Date.now() - pausedTime; // Adjust start time if not paused
   }
-  intervalId = setInterval(function () {
-    const currentTime = Date.now();
-    const elapsedTime = currentTime - startTime;
-    const formattedTime = formatCounter(elapsedTime);
-
-    // Debugging: Log the formatted time being set
-    console.log("Setting Timer Display:", formattedTime);
-
-    // Update the timer display element
-    const timerDisplayElement = document.getElementById("timerDisplay");
-    if (timerDisplayElement) {
-      timerDisplayElement.textContent = formattedTime;
-    }
-  }, 100); // Update the counter every 100 milliseconds
+  intervalId = setInterval(updateCounterDisplay, 100); // Update the counter display
   isPaused = false;
 }
 
@@ -57,12 +44,14 @@ function pauseCounter() {
   clearInterval(intervalId);
   pausedTime = Date.now() - startTime;
   isPaused = true;
+  updateCounterDisplay(); // Update the counter display immediately when paused
 }
 
 function stopCounter() {
   clearInterval(intervalId);
   pausedTime = 0;
   isPaused = false;
+  updateCounterDisplay(); // Update the counter display immediately when paused
 }
 
 // Event listeners for the "Start" and "Stop" buttons
