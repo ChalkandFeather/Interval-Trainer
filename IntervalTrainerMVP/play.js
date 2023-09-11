@@ -1,5 +1,3 @@
-// script.js (combined)
-
 let startTime;
 let intervalId;
 let pausedTime = 0;
@@ -18,10 +16,7 @@ function formatCounter(milliseconds) {
     .toString()
     .padStart(2, "0")}`;
 
-  // Debugging: Log the formatted time
-  // console.log("Formatted Time:", formattedTime);
-
-  // return formattedTime;
+  return formattedTime;
 }
 
 function startCounter() {
@@ -33,27 +28,37 @@ function startCounter() {
     const elapsedTime = currentTime - startTime;
     const formattedTime = formatCounter(elapsedTime);
 
-    // Debugging: Log the formatted time being set
-    console.log("Setting Timer Display:", formattedTime);
-
-    // Update the timer display element
     const timerDisplayElement = document.getElementById("timerDisplay");
     if (timerDisplayElement) {
       timerDisplayElement.textContent = formattedTime;
     }
   }, 100); // Update the counter every 100 milliseconds
+  isPaused = false;
+}
+
+function pauseCounter() {
+  clearInterval(intervalId);
+  pausedTime = Date.now() - startTime;
+  isPaused = true;
 }
 
 function stopCounter() {
   clearInterval(intervalId);
+  pausedTime = 0;
+  isPaused = false;
 }
 
-// Event listeners for the "Start" and "Stop" buttons
+// Event listeners for the "Start," "Pause," and "Stop" buttons
 const startButton = document.getElementById("startButton");
+const pauseButton = document.getElementById("pauseButton");
 const stopButton = document.getElementById("stopButton");
 
 startButton.addEventListener("click", () => {
   startCounter();
+});
+
+pauseButton.addEventListener("click", () => {
+  pauseCounter();
 });
 
 stopButton.addEventListener("click", () => {
