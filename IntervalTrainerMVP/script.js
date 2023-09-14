@@ -32,7 +32,7 @@ function startCounter() {
     const currentTime = Date.now();
     const elapsedTime = currentTime - startTime;
     const formattedTime = formatCounter(elapsedTime);
-
+    // Step 4: Find the timerDisplayElement in the HTML.
     const timerDisplayElement = document.getElementById("timerDisplay");
     if (timerDisplayElement) {
       timerDisplayElement.textContent = formattedTime;
@@ -54,7 +54,9 @@ function pauseCounter() {
 } //no need to update timerDisplayElement as this is unchanged whilst paused
 
 function stopCounter() {
+  // Step 1: Clear the interval timer associated with intervalId.
   clearInterval(intervalId);
+  // Step 4: Find the timerDisplayElement in the HTML.
   const timerDisplayElement = document.getElementById("timerDisplay");
   if (timerDisplayElement) {
     timerDisplayElement.textContent = formatCounter(pausedTime);
@@ -63,11 +65,19 @@ function stopCounter() {
 }
 
 function resetCounter() {
+  // Step 1: Clear the interval timer associated with intervalId.
   clearInterval(intervalId);
+  // Step 2: Reset the pausedTime to 0, as the timer is effectively reset.
   pausedTime = 0;
+  // Step 3: Set isPaused to false.
+  // This indicates that the timer is not paused; it's essentially restarted.
   isPaused = false;
+  // Step 4: Find the timerDisplayElement in the HTML.
   const timerDisplayElement = document.getElementById("timerDisplay");
+  // Step 5: If the timerDisplayElement exists (not null or undefined)...
   if (timerDisplayElement) {
+    // Step 6: Update the timer display text to "00:00:00:00".
+    // This sets the display to zeroed out time, indicating the timer has been reset.
     timerDisplayElement.textContent = "00:00:00:00";
   }
 }
